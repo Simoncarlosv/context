@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';  // Importar useContext
 import { Link } from 'react-router-dom';
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../context/CartContext';  // Importar el CartContext
 import logo from '../assets/img/logo.png';
 
 export const Navbar = () => {
-
-    const { totalPrice } = useContext(CartContext);
-    //const total = 25000;  // Asignar un valor a total
-    const token = false;  // Asignar un valor a token
+    // Obtener totalPrice desde el contexto
+    const { totalPrice } = useContext(CartContext);  
+    
+    // Simular si el usuario tiene token (esto sería dinámico en una aplicación real)
+    const token = false;  
 
     return (
         <>
@@ -44,8 +45,9 @@ export const Navbar = () => {
                                 </>
                             )}
                         </ul>
+                        {/* Mostrar el total en el botón de carrito */}
                         <Link className="btn btn-primary" to="/cart">
-                            🛒 Total: ${totalPrice.toLocaleString()}
+                            🛒 Total: ${totalPrice ? totalPrice.toLocaleString() : '0'}
                         </Link>
                     </div>
                 </div>
